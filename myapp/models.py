@@ -15,8 +15,14 @@ class BaseModel(models.Model):
         abstract = True
 
 
+from django.db import models
+from autoslug import AutoSlugField
+
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
+    slug = AutoSlugField(populate_from='name', unique=True)
+    description = models.TextField(blank=True, null=True)
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100)

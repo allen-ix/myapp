@@ -24,14 +24,18 @@ class ProductListView(View):
 from django.shortcuts import render
 from django.views import View
 from .models import Product, Category
+from django.shortcuts import render, get_object_or_404
+from django.views import View
+from .models import Category, Product
 
 class CategoryProductListView(View):
     template_name = 'myapp/category_product_list.html'
 
-    def get(self, request, category_name, *args, **kwargs):
-        category = Category.objects.get(name=category_name)
+    def get(self, request, category_slug, *args, **kwargs):
+        category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)
         return render(request, self.template_name, {'category': category, 'products': products})
+
 
 # myapp/views.py
 from django.shortcuts import render

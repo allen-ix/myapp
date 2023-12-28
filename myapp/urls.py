@@ -13,7 +13,7 @@ from .views import CategoryProductListView, CustomerListView, OrderListView, Rev
 
 urlpatterns = [
     
-    path('category/<slug:category_name>/', CategoryProductListView.as_view(), name='category-products'),
+    path('category/<slug:category_slug>/', CategoryProductListView.as_view(), name='category-products'),
     path('customers/', CustomerListView.as_view(), name='customer-list'),
     path('orders/', OrderListView.as_view(), name='order-list'),
     path('reviews/', ReviewListView.as_view(), name='review-list'),
