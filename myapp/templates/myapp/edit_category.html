@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Category - My app{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Edit Category: {{ category.name }}</h2>
+            <form method="post" action="{% url 'edit-category' category.slug %}">
+                {% csrf_token %}
+                {{ category_form.as_p }}
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

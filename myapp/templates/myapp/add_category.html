@@ -1,0 +1,16 @@
+<!-- myapp/templates/myapp/add_category.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Add Category{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>Add Category</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ category_form.as_p }}
+      <button type="submit">Add Category</button>
+    </form>
+  </div>
+{% endblock %}
