@@ -1,0 +1,15 @@
+<!-- myapp/templates/myapp/edit_order.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add necessary head content -->
+</head>
+<body>
+    <h1>Edit Order</h1>
+    <form method="post" action="{% url 'edit_order' pk=order.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

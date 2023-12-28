@@ -1,0 +1,16 @@
+<!-- myapp/templates/myapp/add_order.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add necessary head content -->
+</head>
+<body>
+    <h1>Add Order</h1>
+    <h3>Follow this pattern: yyyy-mm-dd</h3>
+    <form method="post" action="{% url 'add_order' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

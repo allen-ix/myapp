@@ -1,0 +1,134 @@
+<!-- myapp/templates/myapp/category_product_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .thumbnail-cell {
+            max-width: 100px;
+            max-height: 100px;
+            overflow: hidden; /* Hide any overflow beyond the max dimensions */
+        }
+
+        .thumbnail-cell img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .button-container {
+            margin-top: 10px;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-right: 10px;
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-right: 10px;
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #45a049; /* Darker green background on hover */
+        }
+    </style>
+    <!-- ... -->
+</head>
+<body>
+    <h1>Product List</h1>
+    <div class="button-container">
+        <a href="{% url 'add_product' %}" class="action-button">Add</a>
+    </div>
+    <table>
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+          <tbody>
+            {% for product in products %}
+              <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td class="thumbnail-cell"><img src="{% static 'images/' %}{{ product.id }}.jpg" alt="{{ product.name }}"></td>
+                <td class="button-container">
+                  <a href="{% url 'edit_product' pk=product.id %}">Edit</a>
+                  <a href="{% url 'delete_product' pk=product.id %}">Delete</a>
+                </td>
+              
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>        
+        <div class="pagination">
+            <span class="step-links">
+                {% if products.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ products.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ products.number }} of {{ products.paginator.num_pages }}.
+                </span>
+        
+                {% if products.has_next %}
+                    <a href="?page={{ products.next_page_number }}">next</a>
+                    <a href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </body>
+</html>

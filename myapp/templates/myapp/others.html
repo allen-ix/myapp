@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Others - My app{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Others:</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{% url 'customer-list' %}">View Customers</a></li>
+                <li class="list-group-item"><a href="{% url 'order-list' %}">View Orders</a></li>
+                <li class="list-group-item"><a href="{% url 'review-list' %}">View Reviews</a></li>
+                
+            </ul>
+        </div>
+    </div>
+{% endblock %}

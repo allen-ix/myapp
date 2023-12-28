@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - My app{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Our Products:</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{% url 'category-products' 'beverages' %}">Beverages</a></li>
+                <li class="list-group-item"><a href="{% url 'category-products' 'frozen-goods' %}">Frozen Goods</a></li>
+                <li class="list-group-item"><a href="{% url 'category-products' 'canned-foods' %}">Canned Foods</a></li>
+                <li class="list-group-item"><a href="{% url 'category-products' 'snacks' %}">Snacks</a></li>
+                <!-- Add more categories as needed -->
+            </ul>
+        </div>
+    </div>
+{% endblock %}

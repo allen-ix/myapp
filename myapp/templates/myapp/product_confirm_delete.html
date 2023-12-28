@@ -1,0 +1,16 @@
+<!-- myapp/templates/myapp/product_confirm_delete.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Delete Product</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete this product?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+        <a href="{% url 'product_list' %}">No, cancel</a>
+    </form>
+</body>
+</html>
